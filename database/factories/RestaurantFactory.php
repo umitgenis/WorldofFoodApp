@@ -24,6 +24,7 @@ class RestaurantFactory extends Factory
             'open_time' => fake()->time('H:i'),
             'close_time' => fake()->time('H:i'),
             'closed' => fake()->boolean(),
+            'image_path' => fake()->image(),
         ];
     }
 }
