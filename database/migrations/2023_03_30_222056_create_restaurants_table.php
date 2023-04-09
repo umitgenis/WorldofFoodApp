@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->text('address');
-            $table->unsignedInteger('city');
+//            $table->unsignedInteger('city');
+            $table->string('city');
             $table->time('open_time');
             $table->time('close_time');
             $table->boolean('closed');

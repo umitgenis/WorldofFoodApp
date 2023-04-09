@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,11 +13,39 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/linkstorage', function () {
+//    Artisan::call('storage:link');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',[\App\Http\Controllers\Store\HomeController::class, 'index'])->name('index');
+
+
+Route::prefix('store')->name('store.')->group(function (){
+//    Route::get('/', [\App\Http\Controllers\Store\HomeController::class, 'index'])->name('index');
+
+    Route::prefix('search')->name('search.')->group(function (){
+        Route::get('/search', [\App\Http\Controllers\Store\SearchController::class, 'restaurant'])->name('restaurant');
+        Route::get('/searchCity', [\App\Http\Controllers\Store\SearchController::class, 'city'])->name('city');
+    });
+
+    Route::prefix('restaurant')->name('restaurant.')->group(function (){
+        Route::get('/{id}', [\App\Http\Controllers\Store\RestaurantController::class, 'detail'])->name('detail');
+
+    });
+
+    Route::prefix('profile')->name('profile.')->middleware('auth')->group(function (){
+        Route::get('/detail/{id}', [\App\Http\Controllers\Store\ProfileController::class, 'detail'])->name('detail');
+        Route::get('/address/{id}', [\App\Http\Controllers\Store\ProfileController::class, 'address'])->name('address');
+        Route::post('/update-password', [\App\Http\Controllers\Store\ProfileController::class, 'updatePassword'])->name('update-password');
+        Route::post('/update-profile/{id}', [\App\Http\Controllers\Store\ProfileController::class, 'update'])->name('update');
+        Route::post('/add-address/{id}', [\App\Http\Controllers\Store\ProfileController::class, 'address_add'])->name('address_add');
+        Route::post('/update-address/{address_id}', [\App\Http\Controllers\Store\ProfileController::class, 'address_update'])->name('address_update');
+        Route::get('/delete-address/{address_id}', [\App\Http\Controllers\Store\ProfileController::class, 'address_delete'])->name('address_delete');
+
+    });
+
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

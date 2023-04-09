@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->text('address');
-            $table->unsignedInteger('city');
+//            $table->unsignedInteger('city');
+            $table->string('city');
         });
     }
 
