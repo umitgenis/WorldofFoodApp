@@ -13,15 +13,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/linkstorage', function () {
-//    Artisan::call('storage:link');
-//});
+
+Route::prefix('admin')->name('admin.')->group(function (){
+
+    Route::get('/',[\App\Http\Controllers\Admin\indexController::class, 'index'])->name('index');
+
+    Route::prefix('search')->name('search.')->group(function (){
+
+    });
+
+});
 
 Route::get('/',[\App\Http\Controllers\Store\HomeController::class, 'index'])->name('index');
 
+Auth::routes();
 
 Route::prefix('store')->name('store.')->group(function (){
-//    Route::get('/', [\App\Http\Controllers\Store\HomeController::class, 'index'])->name('index');
 
     Route::prefix('search')->name('search.')->group(function (){
         Route::get('/search', [\App\Http\Controllers\Store\SearchController::class, 'restaurant'])->name('restaurant');
@@ -46,6 +53,6 @@ Route::prefix('store')->name('store.')->group(function (){
 
 });
 
-Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
