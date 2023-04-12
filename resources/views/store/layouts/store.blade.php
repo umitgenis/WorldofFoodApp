@@ -47,10 +47,7 @@
                         <select class="form-select bg-soft-success border-0" name="address_city" id="selectDelivery"
                                 style="padding-left: 0.25rem; background-position: right 1rem center !important; "
                                 aria-label="Default select">--}}
-                            {{--                            <option >Şehir Şeçiniz</option>--}}
                             @foreach(\App\Models\UserAddress::select('name','city','address')->where('user_id','=',Auth::id())->get() as $key => $address)
-
-                                {{--                                <option value="{{$city}}" @if($address['city'] == $city) selected @endif>{{$city}}</option>--}}
                                 <option class="" value="{{$address['city']}}">
                                     <span><i>{{$address['name']}}</i> | {{$address['address']}} {{$address['city']}} </span>
                                 </option>
@@ -77,6 +74,8 @@
                             <li><a class="dropdown-item" href="{{route('register')}}">Register</a></li>
                         @endguest
                         @auth()
+                            <li><a class="dropdown-item"
+                                   href="{{route('admin.index')}}" target="_blank">Management Panel</a></li>
                             <li><a class="dropdown-item"
                                    href="{{route('store.profile.detail',['id'=>Auth::id()])}}">My Profile</a></li>
                             <li><a class="dropdown-item"

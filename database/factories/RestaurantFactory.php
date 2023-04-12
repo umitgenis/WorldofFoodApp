@@ -18,8 +18,6 @@ class RestaurantFactory extends Factory
      */
     public function definition()
     {
-//        Storage::deleteDirectory('images/restaurants');
-//        Storage::makeDirectory('images/restaurants');
         return [
             'name' => fake()->unique()->colorName()." Restaurant",
             'address' => fake()->address(),

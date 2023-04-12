@@ -18,7 +18,6 @@ class ProfileController extends Controller
             return redirect('/');
         }
         $data = User::where('id', '=', $id)->first();
-//        dd($data);
         return view('store.profile.detail', ['data' => $data]);
     }
 
@@ -27,12 +26,10 @@ class ProfileController extends Controller
         $cityList =  cityList::getCity();
 
         $user = User::where('id', '=', $id)->with('userAddresses')->first();
-//        $userAddresses = UserAddress::select('id', 'name', 'address', 'city')->where('id', '=', $id)->get();
         if (empty($user)) {
             return redirect('/');
         }
         $userAddresses = $user->userAddresses;
-//        dd($userAddresses);
         return view('store.profile.address', ['userAddresses' => $userAddresses, 'cityList' => $cityList]);
     }
 
@@ -45,9 +42,6 @@ class ProfileController extends Controller
             'address' => 'required|string|max:500|min:5',
         ]);
 
-        if (!Auth::check() && (Auth::id() == $id)) {
-            return redirect('/');
-        }
         $userAddress = new UserAddress();
         $userAddress->name = $request->input('address_name');
         $userAddress->city = $request->input('address_city');
@@ -57,12 +51,10 @@ class ProfileController extends Controller
         $userAddressesSave = $userAddress->save();
 
         if ($userAddressesSave) {
-            return back()->with('status', 'Address Addedd Successfuly.');
+            return back()->with('status', 'Address Addedd Success.');
         }else{
             return back()->with('error', 'Error! Address cannot add.');
         }
-
-
     }
 
     public function address_update(Request $request, $address_id)
@@ -88,7 +80,7 @@ class ProfileController extends Controller
         $userAddressesUpdate = $userAddress->save();
 
         if ($userAddressesUpdate) {
-            return back()->with('status', 'Address Updated Successfuly.');
+            return back()->with('status', 'Address Updated Success.');
         }else{
             return back()->with('error', 'Error! Address cannot update.');
         }
@@ -106,7 +98,7 @@ class ProfileController extends Controller
         $userAddressesDelete = $userAddress->delete();
 
         if ($userAddressesDelete) {
-            return back()->with('status', 'Address Deleted Successfuly.');
+            return back()->with('status', 'Address Deleted Success.');
         }else{
             return back()->with('error', 'Error! Address cannot delete.');
         }
@@ -127,7 +119,7 @@ class ProfileController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return back()->with("status", "Password changed successfully!");
+        return back()->with("status", "Password changed Success!");
     }
 
     public function update(Request $request, $id)
@@ -144,7 +136,7 @@ class ProfileController extends Controller
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->save();
-        return back()->with('status-profile', 'Profile Updated Successfuly.');
+        return back()->with('status-profile', 'Profile Updated Success.');
 
     }
 }

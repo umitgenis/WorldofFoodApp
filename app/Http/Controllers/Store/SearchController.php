@@ -11,11 +11,9 @@ class SearchController extends Controller
 {
     public function restaurant(Request $request)
     {
-//        dd($request->query('search'));
         if ($request->has('search')) {
             $search = $request->query('search');
             $data = Restaurant::where('name','ilike','%'.$search.'%')->paginate(4)->withQueryString();
-//            $data1 = Product::where('name','ilike','%'.$search.'%')->paginate(4)->withQueryString();
             return view('store.search.restaurant',['data'=>$data]);
         } else {
             return redirect('/');
@@ -23,8 +21,7 @@ class SearchController extends Controller
     }
     public function city(Request $request)
     {
-//        dd($request->input('citySelect'));
-//        dd($request->get('citySelect'));
+
         if ($request->has('citySelect') && $request->has('search')) {
             $search = $request->query('search');
             $city =  $request->input('citySelect');
@@ -34,7 +31,6 @@ class SearchController extends Controller
             $products = Product::whereHas('restaurant',function ($query) use($city) {
                 $query->where('city','ilike','%'.$city.'%');
             })->where('name','ilike','%'.$search.'%')->paginate(4)->withQueryString();
-//            dd($products);
             return view('store.search.city',['restaurants'=>$restaurants,'products'=>$products]);
         } else {
             return redirect('/');

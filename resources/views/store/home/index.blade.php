@@ -214,7 +214,7 @@
                                                      src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{$value['name']}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -239,7 +239,7 @@
                                                      src="{{asset('store_assets/img/gallery/thai-soup.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{$value['name']}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -264,7 +264,7 @@
                                                      src="{{asset('store_assets/img/gallery/crispy-sandwitch.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{$value['name']}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -289,7 +289,7 @@
                                                      src="{{asset('store_assets/img/gallery/toffes-cake.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{$value['name']}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -415,7 +415,7 @@
                         <div class="carousel-inner">
                             <div class="carousel-item " data-bs-interval="10000">
                                 <div class="row h-100 align-items-center">
-                                    @foreach(\App\Models\Category::inRandomOrder()->limit(6)->get() as $key => $value)
+                                    @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                             <div class="card card-span h-100 rounded-circle">
                                                 <img class="img-fluid rounded-circle h-100"
@@ -431,7 +431,7 @@
                             </div>
                             <div class="carousel-item active" data-bs-interval="5000">
                                 <div class="row h-100 align-items-center">
-                                    @foreach(\App\Models\Category::inRandomOrder()->limit(6)->get() as $key => $value)
+                                    @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                             <div class="card card-span h-100 rounded-circle"><img
                                                     class="img-fluid rounded-circle h-100"
@@ -446,7 +446,7 @@
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
                                 <div class="row h-100 align-items-center">
-                                    @foreach(\App\Models\Category::inRandomOrder()->limit(6)->get() as $key => $value)
+                                    @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                             <div class="card card-span h-100 rounded-circle"><img
                                                     class="img-fluid rounded-circle h-100"
@@ -461,7 +461,7 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="row h-100 align-items-center">
-                                    @foreach(\App\Models\Category::inRandomOrder()->limit(6)->get() as $key => $value)
+                                    @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                             <div class="card card-span h-100 rounded-circle"><img
                                                     class="img-fluid rounded-circle h-100"

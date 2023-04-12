@@ -1,4 +1,5 @@
-<!doctype html>
+@php use Illuminate\Support\Facades\Auth; @endphp
+    <!doctype html>
 <html lang="en">
 
 <head>
@@ -38,40 +39,40 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                {{--                <li>--}}
+                {{--                    <a href={{route('admin.index')}}>--}}
+                {{--                        <i class="material-icons">person</i>--}}
+                {{--                        <p>Panel 1</p>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
+                {{--                <li>--}}
+                {{--                    <a href="{{route('admin.index')}}">--}}
+                {{--                        <i class="material-icons">content_paste</i>--}}
+                {{--                        <p>Panel 2</p>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
                 <li>
-                    <a href={{route('admin.index')}}>
-                        <i class="material-icons">person</i>
-                        <p>Panel 1</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.index')}}">
-                        <i class="material-icons">content_paste</i>
-                        <p>Panel 2</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.index')}}">
-                        <i class="material-icons">library_books</i>
-                        <p>Panel 3</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.index')}}">
+                    <a href="{{route('admin.restaurant.index')}}">
                         <i class="material-icons">bubble_chart</i>
-                        <p>Panel 4</p>
+                        <p>Restaurants</p>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('admin.index')}}">
-                        <i class="material-icons">location_on</i>
-                        <p>Panel 5</p>
-                    </a>
-                </li>
+                {{--                <li>--}}
+                {{--                    <a href="{{route('admin.index')}}">--}}
+{{--                <i class="material-icons">library_books</i>--}}
+                {{--                        <p>Panel 4</p>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
+                {{--                <li>--}}
+                {{--                    <a href="{{route('admin.index')}}">--}}
+                {{--                        <i class="material-icons">location_on</i>--}}
+                {{--                        <p>Panel 5</p>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
                 <li>
                     <a href="{{route('admin.index')}}">
                         <i class="material-icons text-gray">notifications</i>
-                        <p>Panel 6</p>
+                        <p>Order</p>
                     </a>
                 </li>
             </ul>
@@ -124,7 +125,11 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="{{route('store.profile.detail',['id'=>Auth::id()])}}">
+
+                                @auth()
+                                    <p class="visible-lg-inline visible-md-inline text-primary">{{Auth::user()->name}}</p>
+                                @endauth
                                 <i class="material-icons">person</i>
                                 <p class="hidden-lg hidden-md">Profile</p>
                             </a>

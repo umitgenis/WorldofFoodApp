@@ -34,7 +34,6 @@ class DatabaseSeeder extends Seeder
         $vendors = \App\Models\User::factory(8)->vendor()->create();
 
         foreach ($vendors as $vendor) {
-//            $restaurant = Restaurant::factory()->for($vendor)->create();
             $restaurants = Restaurant::factory()->count(1)->for($vendor)->create();
             foreach ($restaurants as $restaurant) {
                 $categories = Category::factory()->count(3)->for($restaurant)->create();
@@ -43,8 +42,6 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
-
-
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

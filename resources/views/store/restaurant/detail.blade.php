@@ -17,7 +17,7 @@
                                 <div class="col-md-7 col-xl-5 col-xxl-4 p-4 p-lg-5">
                                     <img class="img-fluid vh-25 rounded-3 mb-3 mt-3 "
 {{--                                         src="{{asset('store_assets/img/gallery/kuakata-logo.png')}}" alt="..."--}}
-                                         src="{{asset("mages/restaurants/".$restaurant['image_path'])}}" alt="{{"/images/restaurants/".$restaurant['image_path']}}"
+                                         src="{{asset("images/restaurants/".$restaurant['image_path'])}}" alt="{{"/images/restaurants/".$restaurant['image_path']}}"
                                     />
                                     <h1 class="card-title mt-xl-5 mb-3"><span
                                             class="text-primary">Welcome to </span>{{$restaurant['name']}} </h1>
@@ -60,10 +60,9 @@
                                     <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                         <div class="card card-span h-100 rounded-3">
                                             <img class="img-fluid rounded-3 h-100"
-
 {{--                                                 src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"--}}
-                                                 src="{{asset(public_path()."/images/restaurants/".$product['image_path'])}}"
-                                                 alt="{{public_path()."/images/restaurants/".$product['image_path']}}"/>
+                                                 src="{{asset("/images/products/".$product['image_path'])}}"
+                                                 alt="product image"/>
                                             <div class="card-body ps-0">
                                                 <h5 class="fw-bold text-1000 text-truncate mb-1 text-capitalize">{{$product['name']}}</h5>
                                                 <div>
