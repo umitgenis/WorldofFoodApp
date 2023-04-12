@@ -35,17 +35,20 @@
             </button>
 
             @auth()
-                <div style="/*width: 30vi; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;*/ border-radius: 5px; opacity: 0.7"
-                    class="navbar-collapse collapse  bg-soft-success d-sm-flex mx-lg-4 " id="navbarSupportedContent">
+                <div style="border-radius: 5px; opacity: 0.7"
+                    class="navbar-collapse collapse  bg-soft-success d-sm-flex mx-sm-1 mx-md-2 me-md-2 " id="navbarSupportedContent">
                     <div>
                         <p class="mb-0 fw-bold text-lg-center p-2 ">Deliver to:
-                            <i class="fas fa-map-marker-alt text-warning mx-2"></i>
-                            <span class="fw-normal">Current Location </span>
+                            <i class="fas fa-map-marker-alt d-md-none text-warning mx-2"></i>
+                            <span class="fw-normal d-md-none" >Current<span style="visibility: hidden">_</span>Location </span>
                         </p>
                     </div>
-                    <div class="flex-fill">
-                        <select class="form-select bg-soft-success border-0" name="address_city" id="selectDelivery"
-                                style="padding-left: 0.25rem; background-position: right 1rem center !important; "
+                    <div class="flex-fill" >
+                        <select class="form-select bg-soft-success border-0 " name="address_city" id="selectDelivery"
+
+                                style="
+                                white-space: nowrap;overflow: hidden;width: 40vw; text-overflow: ellipsis;
+                                padding-left: 0.25rem; padding-right: 0.25rem ;background-position: right -0.1rem center!important; "
                                 aria-label="Default select">--}}
                             @foreach(\App\Models\UserAddress::select('name','city','address')->where('user_id','=',Auth::id())->get() as $key => $address)
                                 <option class="" value="{{$address['city']}}">
@@ -56,7 +59,7 @@
                     </div>
                 </div>
             @endauth
-            <div class="btn-group mt-sm-1" role="group" aria-label="Button group with nested dropdown" id="navbarSupportedContent">
+            <div class="btn-group mt-sm-1 " role="group" aria-label="Button group with nested dropdown" id="navbarSupportedContent">
                 <button type="button" class="btn btn-primary btn-sm text-gradient px-2">TR</button>
                 <div class="dropdown-center" role="group">
                     <button type="button" style="border-radius: 0px !important;"
@@ -187,7 +190,7 @@
                         <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">blog</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3 col-xxl-2 col-lg-3 mb-3">
+                <div class="col-6 col-md-4 col-lg-3 col-xxl-2 mb-3">
                     <h5 class="lh-lg fw-bold text-white">CONTACT</h5>
                     <ul class="list-unstyled mb-md-4 mb-lg-0">
                         <li class="lh-lg"><a class="text-200 text-decoration-none" href="#!">Help &amp; Support</a></li>
@@ -243,7 +246,8 @@
                         </a></div>
                     <h3 class="text-500 my-4">Receive exclusive offers and <br/>discounts in your mailbox</h3>
                     <div class="row input-group-icon mb-5">
-                        <div class="col-auto"><i class="fas fa-envelope input-box-icon text-500 ms-3"></i>
+                        <div class="col-6">
+                            <i class="fas fa-envelope input-box-icon text-500 ms-3"></i>
                             <input class="form-control input-box bg-800 border-0" type="email" placeholder="Enter Email"
                                    aria-label="email"/>
                         </div>

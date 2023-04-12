@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function restaurant(Request $request)
-    {
-        if ($request->has('search')) {
-            $search = $request->query('search');
-            $data = Restaurant::where('name','ilike','%'.$search.'%')->paginate(4)->withQueryString();
-            return view('store.search.restaurant',['data'=>$data]);
-        } else {
-            return redirect('/');
-        }
-    }
     public function city(Request $request)
     {
 

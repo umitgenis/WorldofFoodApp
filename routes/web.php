@@ -57,7 +57,6 @@ Auth::routes();
 Route::prefix('store')->name('store.')->group(function (){
 
     Route::prefix('search')->name('search.')->group(function (){
-        Route::get('/search', [\App\Http\Controllers\Store\SearchController::class, 'restaurant'])->name('restaurant');
         Route::get('/searchCity', [\App\Http\Controllers\Store\SearchController::class, 'city'])->name('city');
     });
 

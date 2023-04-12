@@ -2,13 +2,14 @@
 
 @section('content')
 
-    <section class="py-5 overflow-hidden bg-primary" id="home">
+    <section class="py-1 overflow-hidden bg-primary" id="home">
         <div class="container">
             <div class="row flex-center">
-                <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0"><a class="img-landing-banner"
-                                                                                  href="#!"><img class="img-fluid"
-                                                                                                 src="{{asset('store_assets/img/gallery/hero-header.png')}}"
-                                                                                                 alt="hero-header"/></a>
+                <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
+                    <a class="img-landing-banner" href="{{url('/')}}">
+                        <img class="img-fluid" src="{{asset('store_assets/img/gallery/hero-header.png')}}"
+                             alt="hero-header"/>
+                    </a>
                 </div>
                 <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
                     <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Are you starving?</h1>
@@ -36,26 +37,24 @@
                                           class="row gx-2 gy-2 align-items-center">
                                         @csrf
                                         <div class="col">
-                                            <div class="input-group-icon" >
-{{--                                                <i class="fas fa-map-marker-alt text-danger input-box-icon"></i>--}}
-{{--                                                <label class="visually-hidden" for="inputDelivery">Address</label>--}}
+                                            <div class="input-group-icon">
                                                 <input class="form-control input-box form-foodwagon-control"
                                                        name="search" id="inputDelivery" type="text"
-                                                       placeholder="Enter Your Address"
-                                                       style="padding-left: 1rem"
-                                                    {{--                                                       value="Search Restaurant in City"--}}
-                                                    {{--                                                       onfocus="this.value = '';"--}}
-                                                    {{--                                                       onblur="if (this.value === '') {this.value = 'Search Restaurant in City';}"--}}
-                                                />
+                                                       placeholder="Search | Restaurant or Food"
+                                                       style="padding-left: 1rem"/>
                                             </div>
                                         </div>
 
                                         <div class="input-group-icon">
                                             <i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
                                             <label class="visually-hidden" for="selectDelivery">City</label>
-                                            <select class="form-select form-select-sm " name="citySelect" id="selectDelivery" style="padding-left: 2rem;background-position: right 1rem center !important; " aria-label="Default select example">
-                                                <option selected >
-                                                    Şehir Şeçiniz</option>
+                                            <select class="form-select form-select-sm " name="citySelect"
+                                                    id="selectDelivery"
+                                                    style="border-radius: 0.25rem ; padding-left: 2rem;background-position: right 1rem center !important;"
+                                                    aria-label="Default select example">
+                                                <option selected>
+                                                    Select City
+                                                </option>
                                                 @foreach($cityList as $city)
                                                     <option value="{{strtolower($city)}}">{{$city}}</option>
                                                 @endforeach
@@ -69,20 +68,31 @@
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel"
                                      aria-labelledby="nav-profile-tab">
                                     <form action="{{route('store.search.city')}}"
-                                          class="row gx-4 gy-2 align-items-center">
+                                          class="row gx-2 gy-2 align-items-center">
                                         @csrf
                                         <div class="col">
-                                            <div class="input-group-icon"><i
-                                                    class="fas fa-map-marker-alt text-danger input-box-icon"></i>
-                                                <label class="visually-hidden" for="inputPickup">Address</label>
+                                            <div class="input-group-icon">
                                                 <input class="form-control input-box form-foodwagon-control"
-                                                       name="search" id="inputPickup" type="text"
-                                                       placeholder="Enter Your Address"
-                                                    {{--                                                       value="Search Restaurant in City"--}}
-                                                    {{--                                                       onfocus="this.value = '';"--}}
-                                                    {{--                                                       onblur="if (this.value === '') {this.value = 'Search Restaurant in City';}"--}}
-                                                />
+                                                       name="search" id="inputDelivery" type="text"
+                                                       placeholder="Search | Restaurant or Food"
+                                                       style="padding-left: 1rem"/>
                                             </div>
+                                        </div>
+
+                                        <div class="input-group-icon">
+                                            <i class="fas fa-map-marker-alt text-danger input-box-icon"></i>
+                                            <label class="visually-hidden" for="selectDelivery">City</label>
+                                            <select class="form-select form-select-sm " name="citySelect"
+                                                    id="selectDelivery"
+                                                    style="border-radius: 0.25rem ; padding-left: 2rem;background-position: right 1rem center !important;"
+                                                    aria-label="Default select example">
+                                                <option selected>
+                                                    Select City
+                                                </option>
+                                                @foreach($cityList as $city)
+                                                    <option value="{{strtolower($city)}}">{{$city}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="d-grid gap-3 col-sm-auto">
                                             <button class="btn btn-danger" type="submit">Find Food</button>
@@ -99,7 +109,7 @@
 
 
 
-    <!-- <section> begin Restaurant Kampanya Bitimi ============================-->
+    <!-- <section>  Kampanya Bitimi ============================-->
     <section class="py-0">
 
         <div class="container">
@@ -137,7 +147,7 @@
                     </div>
                 @endforeach
             </div>
-        </div><!-- end of .container-->
+        </div>
 
     </section>
     <!-- <section> close ============================-->
@@ -187,17 +197,17 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
+        </div>
 
     </section>
     <!-- <section> close ============================-->
 
     <!-- <section> Popular Products ============================-->
-    <section class="py-4 overflow-hidden">
+    <section class="py-2 overflow-hidden">
 
         <div class="container">
             <div class="row h-100">
-                <div class="col-lg-7 mx-auto text-center mt-7 mb-5">
+                <div class="col-lg-7 mx-auto text-center mt-2 mb-5">
                     <h5 class="fw-bold fs-3 fs-lg-5 lh-sm">Popular items</h5>
                 </div>
                 <div class="col-12">
@@ -320,17 +330,17 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
+        </div>
 
     </section>
     <!-- <section> close ============================-->
 
 
     <!-- <section> populer restaurant ============================-->
-    <section id="testimonial">
-        <div class="container">
+    <section id="testimonial" class="pt-4">
+        <div class="container ">
             <div class="row h-100">
-                <div class="col-lg-7 mx-auto text-center mb-6">
+                <div class="col-lg-7 mx-auto text-center mb-3">
                     <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Featured Restaurants</h5>
                 </div>
             </div>
@@ -373,7 +383,7 @@
                         </a>
                     </div>
                 @endforeach
-                <div class="col-12 d-flex justify-content-center mt-5">
+                <div class="col-12 d-flex justify-content-center mt-1">
                     <a class="btn btn-lg btn-primary" href="#">View All <i class="fas fa-chevron-right ms-2"> </i></a>
                 </div>
             </div>
@@ -381,9 +391,8 @@
     </section>
     <!-- <section> populer restaurant ============================-->
 
-
     <!-- <section> begin Search by Food ============================-->
-    <section class="py-8 overflow-hidden">
+    <section class="pt-4 overflow-hidden">
 
         <div class="container">
             <div class="row flex-center mb-6">
@@ -485,6 +494,7 @@
     <!-- <section> close ============================-->
 
 
+
     <!-- App Reklam Start-->
     <section>
         <div class="bg-holder"
@@ -535,13 +545,14 @@
                 </div>
             </div>
             <div class="row flex-center mt-md-8">
-                <div class="col-lg-5 d-none d-lg-block" style="margin-bottom: -122px;"><img class="w-100"
-                                                                                            src="{{asset('store_assets/img/gallery/phone-cta-one.png')}}"
-                                                                                            alt="..."/></div>
+                <div class="col-lg-5 d-none d-lg-block" style="margin-bottom: -122px;">
+                    <img class="w-100" src="{{asset('store_assets/img/gallery/phone-cta-one.png')}}" alt="..."/>
+                </div>
                 <div class="col-lg-5 mt-7 mt-md-0">
                     <h1 class="text-primary">Install the app</h1>
                     <p>It's never been easier to order food. Look for the finest <br class="d-none d-xl-block"/>discounts
-                        and you'll be lost in a world of delectable food.</p>
+                        and you'll be lost in a world of delectable food.
+                    </p>
                     <a class="pe-2" href="https://www.apple.com/app-store/" target="_blank">
                         <img src="{{asset('store_assets/img/gallery/app-store.svg')}}" width="160" alt=""/>
                     </a>
@@ -585,11 +596,6 @@
     </section>
     <!-- <section> close ============================-->
 
-
-
-
-
-
     <!-- <section> begin ============================-->
     <section class="py-0">
 
@@ -615,15 +621,10 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
+        </div>
 
     </section>
     <!-- <section> close ============================-->
-
-
-
-
-
 
     <!-- <section> begin ============================-->
     <section class="pt-5">
@@ -650,7 +651,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
+        </div>
 
     </section>
     <!-- <section> close ============================-->
