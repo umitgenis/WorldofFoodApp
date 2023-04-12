@@ -37,18 +37,18 @@
             @auth()
                 <div style="border-radius: 5px; opacity: 0.7"
                     class="navbar-collapse collapse  bg-soft-success d-sm-flex mx-sm-1 mx-md-2 me-md-2 " id="navbarSupportedContent">
-                    <div>
-                        <p class="mb-0 fw-bold text-lg-center p-2 ">Deliver to:
-                            <i class="fas fa-map-marker-alt d-md-none text-warning mx-2"></i>
-                            <span class="fw-normal d-md-none" >Current<span style="visibility: hidden">_</span>Location </span>
+                    <div class="col-auto">
+                        <p class="mb-0 fw-bold text-lg-left p-2 ">Deliver to:
+                            <i class="fas fa-map-marker-alt d-none d-md-inline text-warning mx-2"></i>
+                            <span class="fw-normal d-none d-md-inline" >Current<span style="visibility: hidden">_</span>Location </span>
                         </p>
                     </div>
                     <div class="flex-fill" >
                         <select class="form-select bg-soft-success border-0 " name="address_city" id="selectDelivery"
 
                                 style="
-                                white-space: nowrap;overflow: hidden;width: 40vw; text-overflow: ellipsis;
-                                padding-left: 0.25rem; padding-right: 0.25rem ;background-position: right -0.1rem center!important; "
+                                white-space: nowrap;overflow: hidden; text-overflow: ellipsis;
+                                padding-left: 0.25rem; padding-right: 0.25rem ;background-position: right 0.1rem center!important; "
                                 aria-label="Default select">--}}
                             @foreach(\App\Models\UserAddress::select('name','city','address')->where('user_id','=',Auth::id())->get() as $key => $address)
                                 <option class="" value="{{$address['city']}}">
