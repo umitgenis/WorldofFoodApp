@@ -55,7 +55,7 @@ class CartController extends Controller
     {
         Session::forget('cart');
 
-        return redirect()->back()->with('status','Cart Empty Success.');
+        return redirect('/')->with('status','Cart Empty Success.');
     }
 
 

@@ -89,6 +89,7 @@ Route::prefix('store')->name('store.')->group(function (){
         Route::get('/add/{product_id}/{quantity}', [\App\Http\Controllers\Store\CartController::class, 'addItem'])->name('add');
         Route::get('/empty', [\App\Http\Controllers\Store\CartController::class, 'empty'])->name('empty');
         Route::get('/detail', [\App\Http\Controllers\Store\CartController::class, 'detail'])->name('detail');
+        Route::get('/remove/{product_id}', [\App\Http\Controllers\Store\CartController::class, 'removeItem'])->name('remove');
         Route::get('/test', [\App\Http\Controllers\Store\CartController::class, 'test'])->name('test');
     });
 

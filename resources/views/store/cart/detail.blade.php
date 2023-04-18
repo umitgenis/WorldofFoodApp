@@ -31,7 +31,8 @@
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div>
                                             <h5 class="mb-1">Shopping cart</h5>
-                                            <p class="mb-0">You have 4 items in your cart</p>
+                                            <p class="mb-0">You have ({{collect($items)->sum('quantity')}}) items in your cart
+                                                </p>
                                         </div>
                                     </div>
                                     @foreach($products as $product)
@@ -59,7 +60,7 @@
                                                             <h5 class="mb-0">{{$product['price']}}<small> TL</small>
                                                             </h5>
                                                         </div>
-                                                        <a href="#!" style="color: #cecece;">
+                                                        <a href="{{route('store.cart.remove',['product_id'=>$product['id']])}}" style="color: #cecece;">
                                                             <i class="fas fa-trash-alt"></i></a>
                                                     </div>
                                                 </div>
@@ -71,7 +72,7 @@
                                 <div class="col-lg-5">
                                         <div class="card mb-3">
                                             <div class="card-body">
-                                                <p><u>Current Address Change:</u></p>
+                                                <p>Current Address Change</p>
                                                 <div class="d-flex justify-content-between">
                                                     <div class="flex-fill">
                                                         <form action="{{route('store.profile.changeAddress')}}"
@@ -101,7 +102,7 @@
                                             @csrf
                                             <div class="card mb-3">
                                                 <div class="card-body">
-                                                    <p><u>Note:</u></p>
+                                                    <p>Note</p>
                                                     <div class="d-flex justify-content-between">
                                                         <div class="flex-fill">
                                                         <textarea name="note" id="note" cols="40" rows="10"
@@ -115,7 +116,7 @@
                                             <div class="card bg-primary text-white rounded-2">
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between align-items-center mb-4">
-                                                        <h5 class="mb-0">Card details</h5>
+                                                        <h5 class="mb-0">Card Details</h5>
                                                     </div>
 
                                                     <p class="small mb-2">Card type</p>
@@ -182,24 +183,23 @@
                                                     </div>
 
                                                     <div class="d-flex justify-content-between text-dark">
-                                                        <p class="mb-2">vat</p>
+                                                        <p class="mb-2">Vat</p>
                                                         @php $Shipping =  $total*0.18   @endphp
                                                         <p class="mb-2">{{$Shipping}} <small>TL</small></p>
                                                     </div>
 
                                                     <div class="d-flex justify-content-between mb-4 text-dark">
                                                         <p class="mb-2">Total(Incl. taxes)</p>
-                                                        @php $totalPrice =  $total + $total * 0.18   @endphp
-                                                        <p class="mb-2">{{$totalPrice}}<small>TL</small></p>
+                                                        @php $totalPrice =  $total + $total * 0.18  @endphp
+                                                        <p class="mb-2"> <strong>{{$totalPrice}}</strong> <small>TL</small></p>
                                                     </div>
 
 
                                                     <div class="d-flex justify-content-between">
-                                                        <button type="submit"
-                                                                class="btn btn-success btn-block btn-lg rounded-2 w-100">
-                                                            <span>{{$totalPrice}}<small>TL</small></span>
-                                                            <span> Checkout <i
-                                                                    class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                                        <button type="submit" class="btn btn-success btn-block btn-lg rounded-2 w-100">
+                                                            <span style="letter-spacing: 0.25rem">
+                                                                Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i>
+                                                            </span>
                                                         </button>
 
                                                     </div>
