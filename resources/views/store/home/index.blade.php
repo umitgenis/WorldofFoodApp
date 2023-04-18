@@ -227,14 +227,16 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="1000">
                                 <div class="row gx-3 h-100 align-items-center">
-                                    @foreach(\App\Models\Product::inRandomOrder()->limit(5)->get() as $key => $value)
-                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                                    @foreach(\App\Models\Product::inRandomOrder()->limit(6)->get() as $key => $value)
+                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
                                                      src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1"
+                                                        style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
+                                                        >{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -252,14 +254,16 @@
                             </div>
                             <div class="carousel-item " data-bs-interval="2000">
                                 <div class="row gx-3 h-100 align-items-center">
-                                    @foreach(\App\Models\Product::inRandomOrder()->limit(5)->get() as $key => $value)
-                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                                    @foreach(\App\Models\Product::inRandomOrder()->limit(6)->get() as $key => $value)
+                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
                                                      src="{{asset('store_assets/img/gallery/thai-soup.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1"
+                                                        style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
+                                                    >{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -277,14 +281,16 @@
                             </div>
                             <div class="carousel-item" data-bs-interval="3000">
                                 <div class="row gx-3 h-100 align-items-center">
-                                    @foreach(\App\Models\Product::inRandomOrder()->limit(5)->get() as $key => $value)
-                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                                    @foreach(\App\Models\Product::inRandomOrder()->limit(6)->get() as $key => $value)
+                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
                                                      src="{{asset('store_assets/img/gallery/crispy-sandwitch.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1"
+                                                        style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
+                                                    >{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -302,14 +308,16 @@
                             </div>
                             <div class="carousel-item">
                                 <div class="row gx-3 h-100 align-items-center">
-                                    @foreach(\App\Models\Product::inRandomOrder()->limit(5)->get() as $key => $value)
-                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                                    @foreach(\App\Models\Product::inRandomOrder()->limit(6)->get() as $key => $value)
+                                        <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
                                                      src="{{asset('store_assets/img/gallery/toffes-cake.png')}}"
                                                      alt="..."/>
                                                 <div class="card-body ps-0">
-                                                    <h5 class="fw-bold text-1000 text-truncate mb-1">{{ucfirst($value['name'])}}</h5>
+                                                    <h5 class="fw-bold text-1000 text-truncate mb-1"
+                                                        style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
+                                                    >{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -356,7 +364,7 @@
             </div>
             <div class="row gx-2">
                 {{--                @foreach(\App\Models\Restaurant::whereNotNull('image')->where('image','!=',"")->inRandomOrder()->limit(4)->get() as $key => $value)--}}
-                @foreach(\App\Models\Restaurant::inRandomOrder()->limit(12)->get() as $key => $value)
+                @foreach(\App\Models\Restaurant::inRandomOrder()->limit(8)->get() as $key => $value)
                     <div class="col-sm-6 col-md-4 col-lg-3 h-100 mb-5">
                         <a href="{{route('store.restaurant.detail',['id'=>$value['id']])}}">
                             <div class="card card-span h-100 text-white rounded-3">

@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
+        </div>
     </section>
     <!-- <section> close ============================-->
 
@@ -67,14 +67,16 @@
                         @foreach($category->products->chunk(6) as $products)
                             <div class="row gx-3 h-100 align-items-center">
                                 @foreach($products as $item => $product)
-                                    <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
+                                    <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                         <div class="card card-span h-100 rounded-3">
                                             <img class="img-fluid rounded-3 h-100"
 {{--                                                 src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"--}}
                                                  src="{{asset("/images/products/".$product['image_path'])}}"
                                                  alt="product image"/>
                                             <div class="card-body ps-0">
-                                                <h5 class="fw-bold text-1000 text-truncate mb-1 text-capitalize">{{$product['name']}}</h5>
+                                                <h5 class="fw-bold text-1000 text-truncate mb-1 text-capitalize"
+                                                    style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
+                                                >{{$product['name']}}</h5>
                                                 <div>
                                                     <span class="text-warning me-2"><i
                                                             class="fas fa-map-marker-alt"></i></span>
@@ -99,15 +101,5 @@
         </div><!-- end of .container-->
     </section>
     <!-- <section> close ============================-->
-{{--    <h3>--}}
-{{--        @foreach($categories as $key => $category)--}}
-{{--            <h3> {{$category['name']}}</h3>--}}
-{{--            @foreach($category->products as $item => $product)--}}
-{{--                --}}{{--                @dd($product)--}}
-{{--                <h4>{{$product['name']}}</h4> <h5>{{$product['category_id']}}</h5>--}}
-{{--            @endforeach--}}
-
-{{--        @endforeach--}}
-{{--    </h3>--}}
 
 @endsection
