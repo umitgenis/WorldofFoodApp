@@ -79,9 +79,9 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::where('id','=',$id)->first();
 
-//        if (! Gate::allows('manage-restaurant', $restaurant)) {
-//            abort(403);
-//        }
+        if (! Gate::allows('manage-restaurant', $restaurant)) {
+            abort(403);
+        }
 
         if(is_null($restaurant)){
             return back()->with('error','Not Fount Restaurant');
@@ -98,6 +98,10 @@ class RestaurantController extends Controller
     public function update(Request $request, $id)
     {
         $restaurant = Restaurant::where('id','=',$id)->first();
+
+        if (! Gate::allows('manage-restaurant', $restaurant)) {
+            abort(403);
+        }
 
         if(is_null($restaurant)){
             return back()->with('error','Not Fount Restaurant');
@@ -144,6 +148,10 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::where('id','=',$id)->first();
 
+        if (! Gate::allows('manage-restaurant', $restaurant)) {
+            abort(403);
+        }
+
         if(is_null($restaurant)){
             return back()->with('error','Not Fount Restaurant');
         }
@@ -167,6 +175,10 @@ class RestaurantController extends Controller
     public function status($id)
     {
         $restaurant = Restaurant::where('id','=',$id)->first();
+
+        if (! Gate::allows('manage-restaurant', $restaurant)) {
+            abort(403);
+        }
 
         if(is_null($restaurant)){
             return back()->with('error','Not Fount Restaurant');
