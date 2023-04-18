@@ -32,7 +32,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
         if (Auth::check()) {
             if (is_null(Session::get('current_address_id'))) {
                 $userAddress = UserAddress::select('id')->where('user_id', '=', Auth::id())->first();
@@ -45,6 +44,8 @@ class HomeController extends Controller
         }
 
         $user = User::where('id', '=', Auth::id())->with('userAddresses')->first();
+
+
 
         $cityList = cityList::getCity();
         return view('store.home.index', ['cityList' => $cityList, 'user' => $user]);

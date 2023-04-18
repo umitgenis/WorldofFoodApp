@@ -131,15 +131,15 @@
                             <div class="position-relative">
                                 <img class="img-fluid rounded-3 w-75"
                                      @php
-                                      $logo = ['store_assets/img/gallery/kuakata-logo.png',
-                                                'store_assets/img/gallery/donuts-hut-logo.png',
-                                                'store_assets/img/gallery/donut-hut-logo.png',
-                                                'store_assets/img/gallery/food-world-logo.png',
-                                                'store_assets/img/gallery/pizzahub-logo.png',
-                                                'store_assets/img/gallery/ruby-tuesday-logo.png',
-                                                'store_assets/img/gallery/taco-bell-logo.png',
-                                                ];
-                                         @endphp
+                                         $logo = ['store_assets/img/gallery/kuakata-logo.png',
+                                                   'store_assets/img/gallery/donuts-hut-logo.png',
+                                                   'store_assets/img/gallery/donut-hut-logo.png',
+                                                   'store_assets/img/gallery/food-world-logo.png',
+                                                   'store_assets/img/gallery/pizzahub-logo.png',
+                                                   'store_assets/img/gallery/ruby-tuesday-logo.png',
+                                                   'store_assets/img/gallery/taco-bell-logo.png',
+                                                   ];
+                                     @endphp
                                      src="{{asset($logo[rand(0,6)])}}" alt="logo"/>
                                 <div class="card-actions">
                                     <div class="badge badge-foodwagon bg-dark-gradient p-4 ">
@@ -153,7 +153,8 @@
                                 </div>
                             </div>
                             <div class="card-body px-0">
-                                <h5 class="fw-bold text-1000 text-truncate" style="max-width: 15vw">{{$value['name']}}</h5>
+                                <h5 class="fw-bold text-1000 text-truncate"
+                                    style="max-width: 15vw">{{$value['name']}}</h5>
                                 <h6>
                                     <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span>
                                     <span class="text-primary">{{$value['city']}}</span>
@@ -253,8 +254,8 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
-{{--                                                     src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"--}}
-{{--                                                     alt="..."/>--}}
+                                                {{--                                                     src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"--}}
+                                                {{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -293,8 +294,8 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
-{{--                                                     src="{{asset('store_assets/img/gallery/thai-soup.png')}}"--}}
-{{--                                                     alt="..."/>--}}
+                                                {{--                                                     src="{{asset('store_assets/img/gallery/thai-soup.png')}}"--}}
+                                                {{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -333,8 +334,8 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
-{{--                                                     src="{{asset('store_assets/img/gallery/crispy-sandwitch.png')}}"--}}
-{{--                                                     alt="..."/>--}}
+                                                {{--                                                     src="{{asset('store_assets/img/gallery/crispy-sandwitch.png')}}"--}}
+                                                {{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -373,8 +374,8 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
-{{--                                                     src="{{asset('store_assets/img/gallery/toffes-cake.png')}}"--}}
-{{--                                                     alt="..."/>--}}
+                                                {{--                                                     src="{{asset('store_assets/img/gallery/toffes-cake.png')}}"--}}
+                                                {{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -443,7 +444,7 @@
                                                    ];
                                      @endphp
                                      src="{{asset($imgProducts[mt_rand(0,6)])}}" alt="product photo"/>
-{{--                                     src="{{asset('store_assets/img/gallery/kuakata.png')}}" alt="..."/>--}}
+                                {{--                                     src="{{asset('store_assets/img/gallery/kuakata.png')}}" alt="..."/>--}}
                                 <div class="card-img-overlay ps-0">
                             <span class="badge bg-danger p-2 ms-3">
                                 <i class="fas fa-tag me-2 fs-0"></i>
@@ -469,7 +470,7 @@
                                                                ];
                                                  @endphp
                                                  src="{{asset($logo[rand(0,6)])}}" alt="logo"/>
-{{--                                                 src="{{asset('store_assets/img/gallery/kuakata-logo.png')}}" alt=""/>--}}
+                                            {{--                                                 src="{{asset('store_assets/img/gallery/kuakata-logo.png')}}" alt=""/>--}}
                                         </a>
                                         <div class="flex-1 ms-3">
                                             <h5 class="mb-0 fw-bold text-1000">{{$value['name']}}</h5>
@@ -479,7 +480,11 @@
                                     </div>
                                     <span class="badge bg-soft-danger p-2">
                                     <span
-                                        class="fw-bold fs-1 text-danger">{{$value['closed'] ==1 ? "Opens Tomorrows" : "Open"  }}</span>
+                                        @php
+                                            $currentTime = \Carbon\Carbon::now("Europe/Istanbul")->format('H:i')
+                                        @endphp
+                                        class="fw-bold fs-1 text-danger">{{$currentTime <= $value['open_time'] || $currentTime >= $value['close_time'] || $value['closed'] == 1  ? "Opens Tomorrows" : "Open"  }}
+                                    </span>
                                 </span>
                                 </div>
                             </div>
@@ -541,8 +546,8 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
-{{--                                                     src="{{asset('store_assets/img/gallery/search-pizza.png')}}"--}}
-{{--                                                     alt="..."/>--}}
+                                                {{--                                                     src="{{asset('store_assets/img/gallery/search-pizza.png')}}"--}}
+                                                {{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
@@ -567,7 +572,7 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
-{{--                                                    src="{{asset('store_assets/img/gallery/steak.png')}}" alt="..."/>--}}
+                                                {{--                                                    src="{{asset('store_assets/img/gallery/steak.png')}}" alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
@@ -592,7 +597,7 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
-{{--                                                    src="{{asset('store_assets/img/gallery/burger.png')}}" alt="..."/>--}}
+                                                {{--                                                    src="{{asset('store_assets/img/gallery/burger.png')}}" alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
@@ -617,8 +622,8 @@
                                                                    ];
                                                      @endphp
                                                      src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
-{{--                                                    src="{{asset('store_assets/img/gallery/sub-sandwich.png')}}"--}}
-                                                    alt="..."/>
+                                                {{--                                                    src="{{asset('store_assets/img/gallery/sub-sandwich.png')}}"--}}
+                                                alt="..."/>
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
