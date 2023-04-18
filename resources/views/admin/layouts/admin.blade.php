@@ -70,9 +70,9 @@
                 {{--                    </a>--}}
                 {{--                </li>--}}
                 <li>
-                    <a href="{{route('admin.index')}}">
+                    <a href="{{route('admin.order.index')}}">
                         <i class="material-icons text-gray">notifications</i>
-                        <p>Order</p>
+                        <p>Orders</p>
                     </a>
                 </li>
             </ul>

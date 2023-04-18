@@ -8,7 +8,17 @@
         <div class="container-fluid">
             <div class="row ">
                 <div class="col-12">
-                    <div class="card card-span mt-7 shadow-lg">
+                    @if(session('status'))
+                        <div class="alert alert-primary bg-primary text-white mt-6 " role="alert">
+                            {{session('status')}}
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{session('error')}}
+                        </div>
+                    @endif
+                    <div class="card card-span shadow-lg @if(!session('status') || !session('status')) mt-7 @endif">
                         <div class="card-body py-0">
                             <div class="row justify-content-center">
                                 <div class="col-md-5 col-xl-7 col-xxl-8 g-0 order-0 order-md-1"><img
@@ -75,7 +85,7 @@
                                             </div>
                                         </div>
                                         <div class="d-grid gap-2">
-                                            <a class="btn btn-lg btn-danger" href="#!" role="button">Order
+                                            <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$product['id'],'quantity' => 1])}}" role="button">Order
                                                 now</a>
                                         </div>
                                     </div>

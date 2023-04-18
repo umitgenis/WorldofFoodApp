@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::prefix('admin')->name('admin.')->group(function (){
 
@@ -46,13 +47,20 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('/delete/{product_id}',[\App\Http\Controllers\Admin\ProductController::class,'delete'])->name('delete');
         Route::get('/{restaurant_id}/{category_id}',[\App\Http\Controllers\Admin\ProductController::class,'index'])->name('index');
     });
+    Route::prefix('order')->name('order.')->group(function (){
+
+        Route::get('/detail/{order_number}',[\App\Http\Controllers\Admin\OrderController::class,'detail'])->name('detail');
+        Route::get('/order-items/{order_id}',[\App\Http\Controllers\Admin\OrderController::class,'orderItems'])->name('orderItems');
+        Route::get('/status/{order_id}',[\App\Http\Controllers\Admin\OrderController::class,'status'])->name('status');
+        Route::get('/',[\App\Http\Controllers\Admin\OrderController::class,'index'])->name('index');
+    });
 
 });
 
 
 Route::get('/',[\App\Http\Controllers\Store\HomeController::class, 'index'])->name('index');
 
-Auth::routes();
+
 
 Route::prefix('store')->name('store.')->group(function (){
 
@@ -73,8 +81,22 @@ Route::prefix('store')->name('store.')->group(function (){
         Route::post('/add-address/{id}', [\App\Http\Controllers\Store\ProfileController::class, 'address_add'])->name('address_add');
         Route::post('/update-address/{address_id}', [\App\Http\Controllers\Store\ProfileController::class, 'address_update'])->name('address_update');
         Route::get('/delete-address/{address_id}', [\App\Http\Controllers\Store\ProfileController::class, 'address_delete'])->name('address_delete');
+        Route::post('/current-location', [\App\Http\Controllers\Store\ProfileController::class, 'changeAddress'])->name('changeAddress');
 
     });
+
+    Route::prefix('cart')->name('cart.')->middleware('auth')->group(function (){
+        Route::get('/add/{product_id}/{quantity}', [\App\Http\Controllers\Store\CartController::class, 'addItem'])->name('add');
+        Route::get('/empty', [\App\Http\Controllers\Store\CartController::class, 'empty'])->name('empty');
+        Route::get('/detail', [\App\Http\Controllers\Store\CartController::class, 'detail'])->name('detail');
+        Route::get('/test', [\App\Http\Controllers\Store\CartController::class, 'test'])->name('test');
+    });
+
+    Route::prefix('checkout')->name('checkout.')->middleware('auth')->group(function (){
+        Route::post('/', [\App\Http\Controllers\Store\CheckoutController::class, 'index'])->name('index');
+    });
+
+
 
 });
 

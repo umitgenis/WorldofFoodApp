@@ -5,13 +5,23 @@
     <section class="py-1 overflow-hidden bg-primary" id="home">
         <div class="container">
             <div class="row flex-center">
+                @if(session('status'))
+                    <div class="alert alert-primary bg-white text-primary mt-6 " role="alert">
+                        {{session('status')}}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-danger bg-white text-primary mt-6" role="alert">
+                        {{session('error')}}
+                    </div>
+                @endif
                 <div class="col-md-5 col-lg-6 order-0 order-md-1 mt-8 mt-md-0">
                     <a class="img-landing-banner" href="{{url('/')}}">
                         <img class="img-fluid" src="{{asset('store_assets/img/gallery/hero-header.png')}}"
                              alt="hero-header"/>
                     </a>
                 </div>
-                <div class="col-md-7 col-lg-6 py-8 text-md-start text-center">
+                <div class="col-md-7 col-lg-6 pb-7 @if(!session('status') || !session('status')) pt-7 @endif text-md-start text-center">
                     <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Are you starving?</h1>
                     <h1 class="text-800 mb-5 fs-4">Within a few clicks, find meals that<br class="d-none d-xxl-block"/>are
                         accessible near you</h1>
@@ -234,7 +244,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="#!" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -259,7 +269,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="#!" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -284,7 +294,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="#!" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -309,7 +319,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="#!" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach

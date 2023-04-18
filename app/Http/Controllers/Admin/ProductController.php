@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -62,7 +63,6 @@ class ProductController extends Controller
         } else {
             return back()->with('error', 'Error! Product cannot add.');
         }
-
     }
 
     /**

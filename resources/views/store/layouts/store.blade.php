@@ -44,18 +44,20 @@
                         </p>
                     </div>
                     <div class="flex-fill" >
-                        <select class="form-select bg-soft-success border-0 " name="address_city" id="selectDelivery"
-
-                                style="
+                        <form action="{{route('store.profile.changeAddress')}}" method="POST">
+                            @csrf
+                            <select onchange="this.form.submit()" class="form-select bg-soft-success border-0 " name="address_id" id="address_id"
+                                    style="
                                 white-space: nowrap;overflow: hidden; text-overflow: ellipsis;
                                 padding-left: 0.25rem; padding-right: 0.25rem ;background-position: right 0.1rem center!important; "
-                                aria-label="Default select">--}}
-                            @foreach(\App\Models\UserAddress::select('name','city','address')->where('user_id','=',Auth::id())->get() as $key => $address)
-                                <option class="" value="{{$address['city']}}">
-                                    <span><i>{{$address['name']}}</i> | {{$address['address']}} {{$address['city']}} </span>
-                                </option>
-                            @endforeach
-                        </select>
+                                    aria-label="Default select">--}}
+                                @foreach(\App\Models\UserAddress::select('id','name','city','address')->where('user_id','=',Auth::id())->get() as $key => $address)
+                                    <option @if($address['id'] == \Illuminate\Support\Facades\Session::get('current_address_id')) selected @endif class="" value="{{$address['id']}}">
+                                        <span><i>{{$address['name']}}</i> | {{$address['address']}} {{$address['city']}} </span>
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
                 </div>
             @endauth
@@ -101,8 +103,8 @@
                         <i class="fa fa-shopping-basket me-2 me-sm-1" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Basket</a></li>
-                        <li><a class="dropdown-item" href="#">Empty Basket</a></li>
+                        <li><a class="dropdown-item" href="{{route('store.cart.detail')}}">Basket</a></li>
+                        <li><a class="dropdown-item" href="{{route('store.cart.empty')}}">Empty Basket</a></li>
                     </ul>
                 </div>
             </div>
@@ -112,7 +114,7 @@
     @yield('content')
 
     <!-- <footer> begin -->
-    <section class="py-0 mt-5">
+    <section class="py-0 mt-0">
         <div class="bg-holder"
              style="background-image:url({{asset('store_assets/img/gallery/cta-two-bg.png')}});background-position:center;background-size:cover;">
         </div>

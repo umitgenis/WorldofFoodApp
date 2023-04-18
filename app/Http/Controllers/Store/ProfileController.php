@@ -9,6 +9,7 @@ use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -137,6 +138,23 @@ class ProfileController extends Controller
         $user->email = $request['email'];
         $user->save();
         return back()->with('status-profile', 'Profile Updated Success.');
+
+    }
+
+    public function changeAddress(Request $request)
+    {
+        if(!Auth::check())
+        {
+            return redirect()->back();
+        }
+
+        if (!is_null(Session::get('current_address_id'))){
+            Session::forget('current_address_id');
+        }
+        Session::put('current_address_id',$request->input('address_id'));
+
+        return redirect()->back();
+
 
     }
 }

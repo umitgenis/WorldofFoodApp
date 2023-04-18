@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Store;
 use App\Helper\cityList;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -30,13 +32,20 @@ class HomeController extends Controller
 
     public function index()
     {
-        $user = User::where('id','=',Auth::id())->with('userAddresses')->first();
-//        @dd($user);
-        if( Auth::check() && Auth::id()){
 
+        if (Auth::check()) {
+            if (is_null(Session::get('current_address_id'))){
+                $userAddress = UserAddress::select('id')->where('user_id', '=', Auth::id())->first();
+                $current_address_id = $userAddress->id;
+
+                Session::put('current_address_id',$current_address_id);
+            }
         }
+
+        $user = User::where('id','=',Auth::id())->with('userAddresses')->first();
+
         $cityList = cityList::getCity();
-//        $cityList = self::getCity();
         return view('store.home.index',['cityList'=>$cityList,'user'=>$user]);
     }
+
 }
