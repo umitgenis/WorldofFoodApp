@@ -21,7 +21,8 @@
                              alt="hero-header"/>
                     </a>
                 </div>
-                <div class="col-md-7 col-lg-6 pb-7 @if(!session('status') || !session('status')) pt-7 @endif text-md-start text-center">
+                <div
+                    class="col-md-7 col-lg-6 pb-7 @if(!session('status') || !session('status')) pt-7 @endif text-md-start text-center">
                     <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-light">Are you starving?</h1>
                     <h1 class="text-800 mb-5 fs-4">Within a few clicks, find meals that<br class="d-none d-xxl-block"/>are
                         accessible near you</h1>
@@ -128,21 +129,31 @@
                     <div class="col-sm-6 col-lg-3 mb-3 mb-md-0 h-100 pb-4">
                         <div class="card card-span h-100">
                             <div class="position-relative">
-                                <img class="img-fluid rounded-3 w-100"
-                                     src="{{asset('store_assets/img/gallery/kuakata-logo.png')}}" alt="..."/>
+                                <img class="img-fluid rounded-3 w-75"
+                                     @php
+                                      $logo = ['store_assets/img/gallery/kuakata-logo.png',
+                                                'store_assets/img/gallery/donuts-hut-logo.png',
+                                                'store_assets/img/gallery/donut-hut-logo.png',
+                                                'store_assets/img/gallery/food-world-logo.png',
+                                                'store_assets/img/gallery/pizzahub-logo.png',
+                                                'store_assets/img/gallery/ruby-tuesday-logo.png',
+                                                'store_assets/img/gallery/taco-bell-logo.png',
+                                                ];
+                                         @endphp
+                                     src="{{asset($logo[rand(0,6)])}}" alt="logo"/>
                                 <div class="card-actions">
-                                    <div class="badge badge-foodwagon bg-primary p-4">
-                                        <div class="d-flex flex-between-center">
-                                            <div class="text-white fs-7">{{5*mt_rand(1,4)}}</div>
-                                            <div class="d-block text-white fs-2">% <br/>
-                                                <div class="fw-normal fs-1 mt-2">Off</div>
+                                    <div class="badge badge-foodwagon bg-dark-gradient p-4 ">
+                                        <div class="d-flex flex-center" style="max-width: 0.4vi; max-height: 0.4vi">
+                                            <div class="text-white fs-3">{{5*mt_rand(1,4)}}</div>
+                                            <div class="d-block text-white fs-0"> % <br/>
+                                                <div class="fw-normal fs-0 mt-1 ms-1"> Off</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body px-0">
-                                <h5 class="fw-bold text-1000 text-truncate">{{$value['name']}}</h5>
+                                <h5 class="fw-bold text-1000 text-truncate" style="max-width: 15vw">{{$value['name']}}</h5>
                                 <h6>
                                     <span class="text-warning me-2"><i class="fas fa-map-marker-alt"></i></span>
                                     <span class="text-primary">{{$value['city']}}</span>
@@ -231,12 +242,23 @@
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
-                                                     src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"
-                                                     alt="..."/>
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/ruby-tuesday.png',
+                                                                   'store_assets/img/gallery/kuakata.png',
+                                                                   'store_assets/img/gallery/pizza-hub.png',
+                                                                   'store_assets/img/gallery/food-world.png',
+                                                                   'store_assets/img/gallery/donuts-hut.png',
+                                                                   'store_assets/img/gallery/red-square.png',
+                                                                   'store_assets/img/gallery/taco-bell.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
+{{--                                                     src="{{asset('store_assets/img/gallery/cheese-burger.png')}}"--}}
+{{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
-                                                        >{{ucfirst($value['name'])}}</h5>
+                                                    >{{ucfirst($value['name'])}}</h5>
                                                     <div>
                                                         <span class="text-warning me-2"><i
                                                                 class="fas fa-map-marker-alt"></i></span>
@@ -246,7 +268,9 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger"
+                                                   href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}"
+                                                   role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -258,8 +282,19 @@
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
-                                                     src="{{asset('store_assets/img/gallery/thai-soup.png')}}"
-                                                     alt="..."/>
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/ruby-tuesday.png',
+                                                                   'store_assets/img/gallery/kuakata.png',
+                                                                   'store_assets/img/gallery/pizza-hub.png',
+                                                                   'store_assets/img/gallery/food-world.png',
+                                                                   'store_assets/img/gallery/donuts-hut.png',
+                                                                   'store_assets/img/gallery/red-square.png',
+                                                                   'store_assets/img/gallery/taco-bell.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
+{{--                                                     src="{{asset('store_assets/img/gallery/thai-soup.png')}}"--}}
+{{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -273,7 +308,9 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger"
+                                                   href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}"
+                                                   role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -285,8 +322,19 @@
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
-                                                     src="{{asset('store_assets/img/gallery/crispy-sandwitch.png')}}"
-                                                     alt="..."/>
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/ruby-tuesday.png',
+                                                                   'store_assets/img/gallery/kuakata.png',
+                                                                   'store_assets/img/gallery/pizza-hub.png',
+                                                                   'store_assets/img/gallery/food-world.png',
+                                                                   'store_assets/img/gallery/donuts-hut.png',
+                                                                   'store_assets/img/gallery/red-square.png',
+                                                                   'store_assets/img/gallery/taco-bell.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
+{{--                                                     src="{{asset('store_assets/img/gallery/crispy-sandwitch.png')}}"--}}
+{{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -300,7 +348,9 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger"
+                                                   href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}"
+                                                   role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -312,8 +362,19 @@
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100" style="min-width: 10vw">
                                             <div class="card card-span h-100 rounded-3">
                                                 <img class="img-fluid rounded-3 h-100"
-                                                     src="{{asset('store_assets/img/gallery/toffes-cake.png')}}"
-                                                     alt="..."/>
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/ruby-tuesday.png',
+                                                                   'store_assets/img/gallery/kuakata.png',
+                                                                   'store_assets/img/gallery/pizza-hub.png',
+                                                                   'store_assets/img/gallery/food-world.png',
+                                                                   'store_assets/img/gallery/donuts-hut.png',
+                                                                   'store_assets/img/gallery/red-square.png',
+                                                                   'store_assets/img/gallery/taco-bell.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,6)])}}" alt="product photo"/>
+{{--                                                     src="{{asset('store_assets/img/gallery/toffes-cake.png')}}"--}}
+{{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="fw-bold text-1000 text-truncate mb-1"
                                                         style="white-space: nowrap;overflow: hidden; max-width: 30vw; text-overflow: ellipsis;"
@@ -327,7 +388,9 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2">
-                                                <a class="btn btn-lg btn-danger" href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}" role="button">Order now</a>
+                                                <a class="btn btn-lg btn-danger"
+                                                   href="{{route('store.cart.add',['product_id'=>$value['id'],'quantity' => 1])}}"
+                                                   role="button">Order now</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -369,7 +432,18 @@
                         <a href="{{route('store.restaurant.detail',['id'=>$value['id']])}}">
                             <div class="card card-span h-100 text-white rounded-3">
                                 <img class="img-fluid rounded-3 h-100"
-                                     src="{{asset('store_assets/img/gallery/kuakata.png')}}" alt="..."/>
+                                     @php
+                                         $imgProducts = ['store_assets/img/gallery/ruby-tuesday.png',
+                                                   'store_assets/img/gallery/kuakata.png',
+                                                   'store_assets/img/gallery/pizza-hub.png',
+                                                   'store_assets/img/gallery/food-world.png',
+                                                   'store_assets/img/gallery/donuts-hut.png',
+                                                   'store_assets/img/gallery/red-square.png',
+                                                   'store_assets/img/gallery/taco-bell.png',
+                                                   ];
+                                     @endphp
+                                     src="{{asset($imgProducts[mt_rand(0,6)])}}" alt="product photo"/>
+{{--                                     src="{{asset('store_assets/img/gallery/kuakata.png')}}" alt="..."/>--}}
                                 <div class="card-img-overlay ps-0">
                             <span class="badge bg-danger p-2 ms-3">
                                 <i class="fas fa-tag me-2 fs-0"></i>
@@ -384,7 +458,18 @@
                                     <div class="d-flex align-items-center mb-3">
                                         <a href="{{route('store.restaurant.detail',['id'=>$value['id']])}}">
                                             <img class="img-fluid"
-                                                 src="{{asset('store_assets/img/gallery/kuakata-logo.png')}}" alt=""/>
+                                                 @php
+                                                     $logo = ['store_assets/img/gallery/kuakata-logo.png',
+                                                               'store_assets/img/gallery/donuts-hut-logo.png',
+                                                               'store_assets/img/gallery/donut-hut-logo.png',
+                                                               'store_assets/img/gallery/food-world-logo.png',
+                                                               'store_assets/img/gallery/pizzahub-logo.png',
+                                                               'store_assets/img/gallery/ruby-tuesday-logo.png',
+                                                               'store_assets/img/gallery/taco-bell-logo.png',
+                                                               ];
+                                                 @endphp
+                                                 src="{{asset($logo[rand(0,6)])}}" alt="logo"/>
+{{--                                                 src="{{asset('store_assets/img/gallery/kuakata-logo.png')}}" alt=""/>--}}
                                         </a>
                                         <div class="flex-1 ms-3">
                                             <h5 class="mb-0 fw-bold text-1000">{{$value['name']}}</h5>
@@ -446,8 +531,18 @@
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                             <div class="card card-span h-100 rounded-circle">
                                                 <img class="img-fluid rounded-circle h-100"
-                                                     src="{{asset('store_assets/img/gallery/search-pizza.png')}}"
-                                                     alt="..."/>
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/noodles.png',
+                                                                   'store_assets/img/gallery/chowmein.png',
+                                                                   'store_assets/img/gallery/burger.png',
+                                                                   'store_assets/img/gallery/sub-sandwich.png',
+                                                                   'store_assets/img/gallery/steak.png',
+                                                                   'store_assets/img/gallery/search-pizza.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
+{{--                                                     src="{{asset('store_assets/img/gallery/search-pizza.png')}}"--}}
+{{--                                                     alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
@@ -460,9 +555,19 @@
                                 <div class="row h-100 align-items-center">
                                     @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                            <div class="card card-span h-100 rounded-circle"><img
-                                                    class="img-fluid rounded-circle h-100"
-                                                    src="{{asset('store_assets/img/gallery/steak.png')}}" alt="..."/>
+                                            <div class="card card-span h-100 rounded-circle">
+                                                <img class="img-fluid rounded-circle h-100"
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/noodles.png',
+                                                                   'store_assets/img/gallery/chowmein.png',
+                                                                   'store_assets/img/gallery/burger.png',
+                                                                   'store_assets/img/gallery/sub-sandwich.png',
+                                                                   'store_assets/img/gallery/steak.png',
+                                                                   'store_assets/img/gallery/search-pizza.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
+{{--                                                    src="{{asset('store_assets/img/gallery/steak.png')}}" alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
@@ -475,9 +580,19 @@
                                 <div class="row h-100 align-items-center">
                                     @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                            <div class="card card-span h-100 rounded-circle"><img
-                                                    class="img-fluid rounded-circle h-100"
-                                                    src="{{asset('store_assets/img/gallery/burger.png')}}" alt="..."/>
+                                            <div class="card card-span h-100 rounded-circle">
+                                                <img class="img-fluid rounded-circle h-100"
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/noodles.png',
+                                                                   'store_assets/img/gallery/chowmein.png',
+                                                                   'store_assets/img/gallery/burger.png',
+                                                                   'store_assets/img/gallery/sub-sandwich.png',
+                                                                   'store_assets/img/gallery/steak.png',
+                                                                   'store_assets/img/gallery/search-pizza.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
+{{--                                                    src="{{asset('store_assets/img/gallery/burger.png')}}" alt="..."/>--}}
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>
                                                 </div>
@@ -490,9 +605,19 @@
                                 <div class="row h-100 align-items-center">
                                     @foreach(\App\Models\Category::inRandomOrder()->limit(5)->get() as $key => $value)
                                         <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
-                                            <div class="card card-span h-100 rounded-circle"><img
-                                                    class="img-fluid rounded-circle h-100"
-                                                    src="{{asset('store_assets/img/gallery/sub-sandwich.png')}}"
+                                            <div class="card card-span h-100 rounded-circle">
+                                                <img class="img-fluid rounded-circle h-100"
+                                                     @php
+                                                         $imgProducts = ['store_assets/img/gallery/noodles.png',
+                                                                   'store_assets/img/gallery/chowmein.png',
+                                                                   'store_assets/img/gallery/burger.png',
+                                                                   'store_assets/img/gallery/sub-sandwich.png',
+                                                                   'store_assets/img/gallery/steak.png',
+                                                                   'store_assets/img/gallery/search-pizza.png',
+                                                                   ];
+                                                     @endphp
+                                                     src="{{asset($imgProducts[rand(0,5)])}}" alt="product photo"/>
+{{--                                                    src="{{asset('store_assets/img/gallery/sub-sandwich.png')}}"--}}
                                                     alt="..."/>
                                                 <div class="card-body ps-0">
                                                     <h5 class="text-center fw-bold text-1000 text-truncate mb-2">{{$value['name']}}</h5>

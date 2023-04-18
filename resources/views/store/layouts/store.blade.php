@@ -108,11 +108,11 @@
                     <button type="button" style="border-top-left-radius: 0; border-bottom-left-radius: 0; "
                             class="btn btn-primary btn-sm dropdown-toggle px-2" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        <i class="fa fa-shopping-basket me-2 me-sm-1" aria-hidden="true"></i>
+                        <i class="fa fa-shopping-cart me-2 me-sm-1" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('store.cart.detail')}}">Basket</a></li>
-                        <li><a class="dropdown-item" href="{{route('store.cart.empty')}}">Empty Basket</a></li>
+                        <li><a class="dropdown-item" href="{{route('store.cart.detail')}}">Cart</a></li>
+                        <li><a class="dropdown-item" href="{{route('store.cart.empty')}}">Empty Cart</a></li>
                     </ul>
                 </div>
             </div>
@@ -270,7 +270,7 @@
             <hr class="border border-800"/>
             <div class="row flex-center pb-3">
                 <div class="col-md-6 order-0">
-                    <p class="text-200 text-center text-md-start">All rights Reserved &copy; Your Company, 2023</p>
+                    <p class="text-200 text-center text-md-start">All rights Reserved &copy; World of Food | 2023</p>
                 </div>
                 <div class="col-md-6 order-1">
                     <p class="text-200 text-center text-md-end"> Made with&nbsp;
