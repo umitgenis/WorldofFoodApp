@@ -105,7 +105,7 @@
                                                     <div class="d-flex justify-content-between">
                                                         <div class="flex-fill">
                                                         <textarea name="note" id="note" cols="40" rows="10"
-                                                                  class="resize-none"></textarea>
+                                                                  class="form-control resize-none"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

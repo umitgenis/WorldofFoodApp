@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::prefix('admin')->name('admin.')->group(function (){
+Route::prefix('admin')->name('admin.')->middleware(['unAuth'])->group(function (){
 
     Route::get('/',[\App\Http\Controllers\Admin\indexController::class, 'index'])->name('index');
 

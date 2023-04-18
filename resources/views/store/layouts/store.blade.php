@@ -1,4 +1,4 @@
-@php use Illuminate\Support\Facades\Auth; @endphp
+@php use App\Models\User;use Illuminate\Support\Facades\Auth; @endphp
     <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
@@ -36,23 +36,27 @@
 
             @auth()
                 <div style="border-radius: 5px; opacity: 0.7"
-                    class="navbar-collapse collapse  bg-soft-success d-sm-flex mx-sm-1 mx-md-2 me-md-2 " id="navbarSupportedContent">
+                     class="navbar-collapse collapse  bg-soft-success d-sm-flex mx-sm-1 mx-md-2 me-md-2 "
+                     id="navbarSupportedContent">
                     <div class="col-auto">
                         <p class="mb-0 fw-bold text-lg-left p-2 ">Deliver to:
                             <i class="fas fa-map-marker-alt d-none d-md-inline text-warning mx-2"></i>
-                            <span class="fw-normal d-none d-md-inline" >Current<span style="visibility: hidden">_</span>Location </span>
+                            <span class="fw-normal d-none d-md-inline">Current<span style="visibility: hidden">_</span>Location </span>
                         </p>
                     </div>
-                    <div class="flex-fill" >
+                    <div class="flex-fill">
                         <form action="{{route('store.profile.changeAddress')}}" method="POST">
                             @csrf
-                            <select onchange="this.form.submit()" class="form-select bg-soft-success border-0 " name="address_id" id="address_id"
+                            <select onchange="this.form.submit()" class="form-select bg-soft-success border-0 "
+                                    name="address_id" id="address_id"
                                     style="
                                 white-space: nowrap;overflow: hidden; text-overflow: ellipsis;
                                 padding-left: 0.25rem; padding-right: 0.25rem ;background-position: right 0.1rem center!important; "
                                     aria-label="Default select">--}}
                                 @foreach(\App\Models\UserAddress::select('id','name','city','address')->where('user_id','=',Auth::id())->get() as $key => $address)
-                                    <option @if($address['id'] == \Illuminate\Support\Facades\Session::get('current_address_id')) selected @endif class="" value="{{$address['id']}}">
+                                    <option
+                                        @if($address['id'] == \Illuminate\Support\Facades\Session::get('current_address_id')) selected
+                                        @endif class="" value="{{$address['id']}}">
                                         <span><i>{{$address['name']}}</i> | {{$address['address']}} {{$address['city']}} </span>
                                     </option>
                                 @endforeach
@@ -61,7 +65,8 @@
                     </div>
                 </div>
             @endauth
-            <div class="btn-group mt-sm-1 " role="group" aria-label="Button group with nested dropdown" id="navbarSupportedContent">
+            <div class="btn-group mt-sm-1 " role="group" aria-label="Button group with nested dropdown"
+                 id="navbarSupportedContent">
                 <button type="button" class="btn btn-primary btn-sm text-gradient px-2">TR</button>
                 <div class="dropdown-center" role="group">
                     <button type="button" style="border-radius: 0px !important;"
@@ -79,8 +84,11 @@
                             <li><a class="dropdown-item" href="{{route('register')}}">Register</a></li>
                         @endguest
                         @auth()
-                            <li><a class="dropdown-item"
-                                   href="{{route('admin.index')}}" target="_blank">Management Panel</a></li>
+                            @if( (Auth::user()->role == User::ADMIN) || (Auth::user()->role == User::VENDOR))
+                                <li><a class="dropdown-item"
+                                       href="{{route('admin.index')}}" target="_blank">Management Panel</a></li>
+                            @endif
+
                             <li><a class="dropdown-item"
                                    href="{{route('store.profile.detail',['id'=>Auth::id()])}}">My Profile</a></li>
                             <li><a class="dropdown-item"
