@@ -37,7 +37,17 @@
                                     <tbody>
                                     @foreach($products as $product)
                                         <tr class="h5">
-                                            <td><img src="{{asset("/images/products/".$product['image_path'])}}" style="max-height: 8vw; width: auto" alt="product image"></td>
+                                            <td>
+                                                @if(! \Illuminate\Support\Str::startsWith($product['image_path'],'images'))
+                                                    <img src="{{asset("/images/products/".$product['image_path'])}}"
+                                                         style="max-height: 6vw; width: auto"
+                                                         alt="products photo">
+                                                @elseif(\Illuminate\Support\Str::startsWith($product['image_path'],'images'))
+                                                    <img src="{{asset($product['image_path'])}}"
+                                                         style="max-height: 6vw; width: auto"
+                                                         alt="products photo">
+                                                @endif
+                                            </td>
                                             <td>{{ucfirst($product['name'])}}</td>
                                             <td>{{$product['sku_code']}}</td>
                                             <td>{{$product['price']}} <small>TL</small></td>
