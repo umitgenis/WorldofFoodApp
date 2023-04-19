@@ -47,7 +47,7 @@ class CheckoutController extends Controller
                 {
                     $orderItem = new OrderItem();
                     $orderItem->order_id = $order->id;
-//                    $orderItem->quantity = $items[$product->id]['quantity'];
+                    $orderItem->quantity = $items[$product->id]['quantity'];
                     $orderItem->unit_price = $product->price;
                     $orderItem->product_id = $product->id;
                     $orderItem->product_sku_code = $product->sku_code;

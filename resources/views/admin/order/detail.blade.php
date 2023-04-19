@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-header" data-background-color="purple">
                             <h4 class="title">Detail</h4>
-                            <p class="category">[{{$order['order_number']}}] {{$order->user['name']}}</p>
+                            <p class="category"><strong><u>{{$order->user['name']}}</u></strong></p>
                         </div>
                         <div class="card-content table-responsive">
                             <table class="table">

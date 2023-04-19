@@ -62,7 +62,7 @@
     </div>
 
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5 mb-8">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-primary opacity-7 ">{{ __('Change Password') }}</div>
